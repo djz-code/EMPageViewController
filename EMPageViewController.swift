@@ -65,7 +65,17 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
     }()
     
     private var leftViewController: UIViewController?
-    private(set) var selectedViewController: UIViewController?
+    var selectedViewController: UIViewController? //{
+//        didSet {
+//            if selectedViewController != nil {
+//                self.addChildIfNeeded(selectedViewController!)
+//                self.loadViewControllers(selectedViewController!)
+////                self.loadLeftViewControllerForSelectedViewController(selectedViewController!)
+////                self.loadRightViewControllerForSelectedViewController(selectedViewController!)
+//                self.layoutViews()
+//            }
+//        }
+//    }
     private var rightViewController: UIViewController?
     
     private(set) var scrolling = false
@@ -134,6 +144,25 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
         
         self.scrollView.delegate = self
         self.view.addSubview(scrollView)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.selectedViewController != nil {
+            self.addChildIfNeeded(self.selectedViewController!)
+            self.loadLeftViewControllerForSelectedViewController(selectedViewController!)
+            self.loadRightViewControllerForSelectedViewController(selectedViewController!)
+            self.loadViewControllers(self.selectedViewController!)
+            
+            self.scrollView.frame = self.view.bounds
+            self.scrollView.contentSize = CGSize(width: self.view.bounds.width * 3, height: self.view.bounds.height)
+            self.layoutViews()
+
+            if self.leftViewController != nil {
+                self.scrollView.contentOffset.x = self.scrollView.bounds.size.width
+            }
+        }
     }
     
     override func viewWillLayoutSubviews() {
