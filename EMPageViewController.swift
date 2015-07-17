@@ -61,6 +61,7 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.setTranslatesAutoresizingMaskIntoConstraints(true)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.delaysContentTouches = false
         return scrollView
     }()
     
