@@ -56,8 +56,8 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.pagingEnabled = true
         scrollView.scrollsToTop = false
         scrollView.autoresizingMask = .FlexibleTopMargin | .FlexibleRightMargin | .FlexibleBottomMargin | .FlexibleLeftMargin
-        scrollView.bounces = true
-        scrollView.alwaysBounceHorizontal = true
+        scrollView.bounces = false
+        scrollView.alwaysBounceHorizontal = false
         scrollView.setTranslatesAutoresizingMaskIntoConstraints(true)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
