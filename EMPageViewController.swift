@@ -66,17 +66,7 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
     }()
     
     private var leftViewController: UIViewController?
-    var selectedViewController: UIViewController? //{
-//        didSet {
-//            if selectedViewController != nil {
-//                self.addChildIfNeeded(selectedViewController!)
-//                self.loadViewControllers(selectedViewController!)
-////                self.loadLeftViewControllerForSelectedViewController(selectedViewController!)
-////                self.loadRightViewControllerForSelectedViewController(selectedViewController!)
-//                self.layoutViews()
-//            }
-//        }
-//    }
+    var selectedViewController: UIViewController?
     private var rightViewController: UIViewController?
     
     private(set) var scrolling = false
